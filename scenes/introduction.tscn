@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr46pe8ysmgsv"]
+[gd_scene load_steps=10 format=3 uid="uid://cr46pe8ysmgsv"]
 
 [ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="1_a83v4"]
 [ext_resource type="Script" path="res://scenes/introduction.gd" id="2_7wj7s"]
@@ -17,6 +17,59 @@ Button/styles/normal = SubResource("StyleBoxFlat_pl3pd")
 [sub_resource type="LabelSettings" id="LabelSettings_kepmg"]
 font = ExtResource("1_a83v4")
 font_size = 64
+
+[sub_resource type="Animation" id="Animation_3l01i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_53wll"]
+resource_name = "fade_animation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_32cd6"]
+resource_name = "fade_animation_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7kkvj"]
+_data = {
+"RESET": SubResource("Animation_3l01i"),
+"fade_animation": SubResource("Animation_53wll"),
+"fade_animation_out": SubResource("Animation_32cd6")
+}
 
 [node name="Introduction" type="Control"]
 layout_mode = 3
@@ -38,6 +91,7 @@ grow_vertical = 2
 color = Color(0.0156863, 0.0156863, 0.0156863, 1)
 
 [node name="Introduction" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -54,6 +108,11 @@ text = "It needs Food"
 label_settings = SubResource("LabelSettings_kepmg")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Introduction"]
+libraries = {
+"": SubResource("AnimationLibrary_7kkvj")
+}
 
 [node name="Skip" type="Button" parent="."]
 layout_mode = 0
