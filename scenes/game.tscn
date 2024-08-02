@@ -1,7 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dn87rrrypko6n"]
+[gd_scene load_steps=18 format=3 uid="uid://dn87rrrypko6n"]
 
 [ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="1_uhd6r"]
 [ext_resource type="Script" path="res://scenes/game.gd" id="2_gtr1j"]
+[ext_resource type="AudioStream" uid="uid://lb6qg7djkw3c" path="res://music/man-scream.mp3" id="3_wel28"]
+[ext_resource type="AudioStream" uid="uid://c16trk3qg6qjw" path="res://music/monster-scream.mp3" id="4_b2udb"]
+[ext_resource type="AudioStream" uid="uid://bduqjloq6e0ii" path="res://music/horror-music.mp3" id="5_bpxyk"]
+[ext_resource type="AudioStream" uid="uid://dwm2y5htipc6x" path="res://music/timer.mp3" id="6_tnls5"]
+[ext_resource type="FontFile" uid="uid://c1atsl3t22rt2" path="res://fonts/Kanit-SemiBold.ttf" id="7_khg22"]
+[ext_resource type="PackedScene" uid="uid://b8qityhxo1kyg" path="res://scenes/monster.tscn" id="8_1shsq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl3pd"]
 bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
@@ -66,6 +72,14 @@ _data = {
 "shake": SubResource("Animation_axhb1")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_fqyeu"]
+font = ExtResource("1_uhd6r")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_kviw4"]
+font = ExtResource("7_khg22")
+font_size = 48
+
 [node name="Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -105,5 +119,44 @@ libraries = {
 
 [node name="TimerNode" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="Man_Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wel28")
+volume_db = 3.0
+
+[node name="Monster_scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_b2udb")
+volume_db = 4.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bpxyk")
+volume_db = -3.0
+
+[node name="Clock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_tnls5")
+volume_db = 5.0
+
+[node name="Lvl" type="Label" parent="."]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 122.0
+offset_bottom = 50.0
+text = "Level:"
+label_settings = SubResource("LabelSettings_fqyeu")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LvlNumber" type="Label" parent="."]
+layout_mode = 0
+offset_left = 123.0
+offset_top = -7.0
+offset_right = 163.0
+offset_bottom = 65.0
+text = "1"
+label_settings = SubResource("LabelSettings_kviw4")
+horizontal_alignment = 1
+
+[node name="Monster" parent="." instance=ExtResource("8_1shsq")]
 
 [connection signal="timeout" from="TimerNode" to="." method="_on_timer_node_timeout"]

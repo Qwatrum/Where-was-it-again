@@ -58,7 +58,9 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Credits:
 Code: Qwatrum
-Font: Cramps from popdog"
+Font: Cramps from popdog 
+			Kanit-Semi Bold
+Music: Pixabay"
 label_settings = SubResource("LabelSettings_28r7x")
 horizontal_alignment = 1
 

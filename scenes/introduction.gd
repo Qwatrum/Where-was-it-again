@@ -1,6 +1,6 @@
 extends Control
 
-var intro = ["It needs food", "You need to give it food", "Be quick", "Click all the stars", "Before time runs out...", "If you miss click...", "you will loose\nalot of time", "("]
+var intro = ["It needs food", "You need to feed it", "Be quick", "Click all the stars", "Before time runs out...", "If you miss click...", "you will loose\nalot of time", "("]
 
 func _ready():
 	var player = $"Introduction/AnimationPlayer"
