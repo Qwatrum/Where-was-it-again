@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn87rrrypko6n"]
+
+[ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="1_uhd6r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl3pd"]
+bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8eouq"]
+bg_color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuq1p"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+
+[sub_resource type="Theme" id="Theme_1wc40"]
+Button/colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_uhd6r")
+Button/styles/hover = SubResource("StyleBoxFlat_pl3pd")
+Button/styles/normal = SubResource("StyleBoxFlat_pl3pd")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_8eouq")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_yuq1p")
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_1wc40")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+
+[node name="Timer" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 641.0
+offset_right = 217.0
+offset_bottom = 668.0
+rotation = -1.5708
+value = 50.0
+show_percentage = false

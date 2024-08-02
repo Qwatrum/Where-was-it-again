@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://c76a1yuup18dw"]
+
+[ext_resource type="Texture2D" uid="uid://cn50h6y8ut68e" path="res://assets/title.png" id="1_0qfux"]
+[ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="1_gi5n2"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="2_eug0j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl3pd"]
+bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[sub_resource type="Theme" id="Theme_08dkt"]
+Button/colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_gi5n2")
+Button/styles/hover = SubResource("StyleBoxFlat_pl3pd")
+Button/styles/normal = SubResource("StyleBoxFlat_pl3pd")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_08dkt")
+script = ExtResource("2_eug0j")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(576, 64)
+texture = ExtResource("1_0qfux")
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.0
+offset_top = -74.0
+offset_right = 147.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Play"
+
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Credits
+"
+
+[connection signal="button_down" from="Buttons/Play" to="." method="_on_play_button_down"]
+[connection signal="button_down" from="Buttons/Credits" to="." method="_on_credits_button_down"]

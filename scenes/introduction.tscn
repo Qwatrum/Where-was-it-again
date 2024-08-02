@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr46pe8ysmgsv"]
+
+[ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="1_a83v4"]
+[ext_resource type="Script" path="res://scenes/introduction.gd" id="2_7wj7s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl3pd"]
+bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[sub_resource type="Theme" id="Theme_rc8ro"]
+Button/colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_a83v4")
+Button/styles/hover = SubResource("StyleBoxFlat_pl3pd")
+Button/styles/normal = SubResource("StyleBoxFlat_pl3pd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_kepmg"]
+font = ExtResource("1_a83v4")
+font_size = 64
+
+[node name="Introduction" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rc8ro")
+script = ExtResource("2_7wj7s")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+
+[node name="Introduction" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -303.5
+offset_top = -73.5
+offset_right = 303.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "It needs Food"
+label_settings = SubResource("LabelSettings_kepmg")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Skip" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 579.0
+offset_right = 1149.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 32
+text = "Skip"
+
+[connection signal="button_down" from="Skip" to="." method="_on_skip_button_down"]

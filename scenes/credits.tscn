@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw5l71w7ghg03"]
+
+[ext_resource type="Texture2D" uid="uid://cn50h6y8ut68e" path="res://assets/title.png" id="1_ni1an"]
+[ext_resource type="Script" path="res://scenes/credits.gd" id="2_k2hch"]
+[ext_resource type="FontFile" uid="uid://st6k1jo3tlmk" path="res://fonts/cramps/CRAMPS__.TTF" id="2_pmm7k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pl3pd"]
+bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[sub_resource type="Theme" id="Theme_v27c6"]
+Button/colors/font_color = Color(0.717647, 0.717647, 0.717647, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("2_pmm7k")
+Button/styles/hover = SubResource("StyleBoxFlat_pl3pd")
+Button/styles/normal = SubResource("StyleBoxFlat_pl3pd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_28r7x"]
+line_spacing = 16.0
+font = ExtResource("2_pmm7k")
+font_size = 32
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_v27c6")
+script = ExtResource("2_k2hch")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0156863, 0.0156863, 0.0156863, 1)
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(576, 64)
+texture = ExtResource("1_ni1an")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -18.5
+offset_right = 79.5
+offset_bottom = 18.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits:
+Code: Qwatrum
+Font: Cramps from popdog"
+label_settings = SubResource("LabelSettings_28r7x")
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.5
+offset_top = -145.0
+offset_right = 136.5
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Go back"
+
+[connection signal="button_down" from="Back" to="." method="_on_back_button_down"]
